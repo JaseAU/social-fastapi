@@ -17,5 +17,11 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
-      - name: say hi to Jason
-        run: echo "hello Jason"
+      - name: Install python version 3.12.3
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.12.3"
+      - name: update pip
+        uses: python -m pip install --upgrade pip
+      - name: install all dependencies
+        uses: pip install -r requirements.txt
