@@ -11,8 +11,21 @@ on: [push, pull_request]
 #       - "main"
 #       - 
 
+#env
+
 jobs:
   job1:
+    env:
+      DB_HOST: localhost
+      #DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: SYS0FAPI
+      DB_SCHEMA: FAPISYSDB
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgresdefault
+      SECRET_KEY: 09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 60
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
