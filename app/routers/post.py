@@ -110,6 +110,11 @@ def update_post(id: int, upd_post: schemas.PostCreate, db: Session = Depends(get
     if post.first() == None:
         raise HTTPException(status.HTTP_404_NOT_FOUND,
                             detail=f"Post with id: {id} was not found.")
+    
+    if post.first().owner_id != current_user.user_id:
+        raise HTTPException(status.HTTP_403_FORBIDDEN,
+                            detail=f"Post with id: {id} can't be updated by this user {current_user.user_id}")
+
     post.update(upd_post.model_dump(), synchronize_session=False)
     db.commit()
 

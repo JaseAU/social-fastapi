@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr, conint
+from pydantic import BaseModel, EmailStr, Field
 from datetime import datetime
 
 # Requests
@@ -35,10 +35,11 @@ class Post(PostBase):
         from_attributes = True
 
 # Post
-#   Title, Content, Published, 
+#   Title, Content, Published,
 #   Id, Created_At, Owner_ID
 #   Owner details
 # VoteCnt
+
 
 class PostVote(BaseModel):
     post: Post
@@ -69,4 +70,5 @@ class TokenData(BaseModel):
 
 class Vote(BaseModel):
     post_id: int
-    updown: conint(le=1)
+    # updown: conint(le=1)
+    updown: int = Field(..., ge=0, le=1)
