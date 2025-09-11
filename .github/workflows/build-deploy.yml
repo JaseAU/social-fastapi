@@ -57,7 +57,14 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: install all dependencies
         run: pip install -r requirements.txt
-      - name: Connect to PostgreSQL
+      - name: Create test database
+        run: |
+          PGPASSWORD=${{secrets.DB_PASSWORD}} psql \
+            -h ${{secrets.DB_HOST}} \
+            -U ${{secrets.DB_USERNAME}} \
+            -p ${{secrets.DB_PORT}} \
+            -c "CREATE DATABASE \"${{secrets.DB_NAME}}\";"
+      - name: Alembic Schema and Upgrade
         # Alembic upgrade DB Schema (and create schema)
         run: alembic upgrade head
       - name: test with pytest
