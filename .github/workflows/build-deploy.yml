@@ -18,16 +18,16 @@ jobs:
     environment:
       name: testing
     env:
-      DB_HOST: {{secrets.DB_HOST}}
+      DB_HOST: ${{secrets.DB_HOST}}
       #DB_HOST: postgres / localhost
-      DB_PORT: {{secrets.DB_PORT}}
-      DB_NAME: {{secrets.DB_NAME}}
-      DB_SCHEMA: {{secrets.DB_SCHEMA}}
-      DB_USERNAME: {{secrets.DB_USERNAME}}
-      DB_PASSWORD: {{secrets.DB_PASSWORD}}
-      SECRET_KEY: {{secrets.SECRET_KEY}}
-      ALGORITHM: {{secrets.ALGORITHM}}
-      ACCESS_TOKEN_EXPIRE_MINUTES: {{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+      DB_PORT: ${{secrets.DB_PORT}}
+      DB_NAME: ${{secrets.DB_NAME}}
+      DB_SCHEMA: ${{secrets.DB_SCHEMA}}
+      DB_USERNAME: ${{secrets.DB_USERNAME}}
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
