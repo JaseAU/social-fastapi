@@ -13,7 +13,7 @@ from app.oauth2 import create_access_token
 
 
 #SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.db_username}:{settings.db_password}@{settings.db_host}:{settings.db_port}/{settings.db_name}"
-SQLALCHEMY_DATABASE_URL = f"postgresql://postgres:postgresdefault@localhost:5432/UAT0FAPI"
+SQLALCHEMY_DATABASE_URL = f"postgresql://postgres:postgresdefault@localhost:5432/SYS0FAPI_test"
 
 
 # ORM - SQLAlchemy
