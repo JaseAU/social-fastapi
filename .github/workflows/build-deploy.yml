@@ -98,7 +98,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/social-fastapi:latest
+          cache-from: type=local, src=/tmp/.buildx-cache
+          cache-to: type=local, dest=/tmp/.buildx-cache
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
           sbom: true
